@@ -177,9 +177,9 @@ module Reckon
       value = [$3, $2, $1].join("/") if value =~ /^(\d{2})\.(\d{2})\.(\d{4})$/            # german format
       value = [$3, $2, $1].join("/") if value =~ /^(\d{2})\-(\d{2})\-(\d{4})$/            # nordea format
       begin
-        guess = Chronic.parse(value, :context => :past)
+		  guess = Chronic.parse(value, :context => :past, :endian_precedence => [:little, :median])
         if guess.to_i < 953236800 && value =~ /\//
-          guess = Chronic.parse((value.split("/")[0...-1] + [(2000 + value.split("/").last.to_i).to_s]).join("/"), :context => :past)
+			guess = Chronic.parse((value.split("/")[0...-1] + [(2000 + value.split("/").last.to_i).to_s]).join("/"), :context => :past, :endian_precedence => [:little, :median])
         end
         guess
       rescue
