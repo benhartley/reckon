@@ -1,3 +1,4 @@
+#coding: utf-8
 #!/usr/bin/env ruby
 
 require 'rubygems'
@@ -56,7 +57,7 @@ module Reckon
 
     def clean_money(money)
       return nil if money.nil? || money.length == 0
-      money.gsub(/[\$,]/, '').to_f
+      money.gsub(/[\£,]/, '').to_f
     end
   end
 end

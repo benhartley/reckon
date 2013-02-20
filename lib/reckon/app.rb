@@ -1,3 +1,4 @@
+#coding: utf-8
 require 'pp'
 
 module Reckon
@@ -167,7 +168,7 @@ module Reckon
     end
 
     def pretty_money(amount, negate = false)
-      (amount >= 0 ? " " : "") + sprintf("%0.2f", amount * (negate ? -1 : 1)).gsub(/^((\-)|)(?=\d)/, '\1$')
+      (amount >= 0 ? " " : "") + sprintf("%0.2f", amount * (negate ? -1 : 1)).gsub(/^((\-)|)(?=\d)/, '\1£')
     end
 
     def date_for(index)
